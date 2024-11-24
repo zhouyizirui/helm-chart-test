@@ -102,17 +102,16 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+volumes:
+  - name: secret-volume  # Your new secret volume
+    secret:
+      secretName: file-secret-bin
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts:
+  - name: secret-volume  # Your new secret volume mount
+    mountPath: /app/secrets/bin
+    readOnly: true
 
 nodeSelector: {}
 
@@ -124,3 +123,7 @@ secret:
   name: test-spring-boot-secret
   databasePassword: "123456"
   apiKey: "888888"
+
+fileSecret:
+  name: file-secret-bin
+  credentials: "XADASFJKSALJDFKSJLFJLSAJLKFJLSJALFSAF="
