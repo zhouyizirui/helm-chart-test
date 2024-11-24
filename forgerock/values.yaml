@@ -119,3 +119,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+secret:
+  name: test-spring-boot-secret
+  databasePassword: "123456"
+  apiKey: "888888"

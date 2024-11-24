@@ -48,6 +48,17 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
+          env:
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: { { .Values.secret.name } }
+                  key: DATABASE_PASSWORD
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: { { .Values.secret.name } }
+                  key: API_KEY
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
