@@ -51,12 +51,12 @@ spec:
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: { { .Values.secret.name } }
+                  name: {{ .Values.secret.name }}
                   key: DATABASE_PASSWORD
             - name: API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: { { .Values.secret.name } }
+                  name: {{ .Values.secret.name }}
                   key: API_KEY
           {{- with .Values.volumeMounts }}
           volumeMounts:
