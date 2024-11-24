@@ -105,7 +105,10 @@ autoscaling:
 volumes:
   - name: secret-volume  # Your new secret volume
     secret:
-      secretName: file-secret-bin
+      secretName: test-spring-boot-secret
+      items:
+        - key: API_KEY
+          path: API_KEY
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
@@ -127,3 +130,4 @@ secret:
 fileSecret:
   name: file-secret-bin
   credentials: "XADASFJKSALJDFKSJLFJLSAJLKFJLSJALFSAF="
+
