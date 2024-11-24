@@ -109,10 +109,16 @@ volumes:
       items:
         - key: API_KEY
           path: API_KEY
+  - name: secret-file-volume  # Your new secret file volume
+    secret:
+      secretName: file-secret-bin
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
   - name: secret-volume  # Your new secret volume mount
+    mountPath: /app/secrets/bin
+    readOnly: true
+  - name: secret-file-volume  # Your new secret volume mount
     mountPath: /app/secrets/bin
     readOnly: true
 
